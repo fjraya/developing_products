@@ -24,7 +24,11 @@ shinyUI(fluidPage(
     sidebarLayout(
         sidebarPanel(
             selectInput(inputId = "date", label = "Select Date", choices = NULL),
-            selectInput(inputId = "ccaa", label = "Select CCAA", choices = NULL)
+            selectInput(inputId = "ccaa", label = "Select CCAA", choices = NULL),
+            helpText("Note - Select Date and CCAA to see vaccine data about selection.",
+                     "In the last plot, you can only select CCAA."),
+            helpText("Map shows distribution of vaccine in the select CCAA and Day. Please click on the icon to see data."),
+            helpText("Plot shows distribution of vaccine along time. Please select the CCAA to see data.")
         ),
         # Show a plot of the generated distribution
         mainPanel(
@@ -34,7 +38,7 @@ shinyUI(fluidPage(
             br(),
             h2("Distribution of vaccines"),
             leafletOutput("mymap"),
-            h2("Historic distribution of vaccines"),
+            h2("History of vaccine distribution"),
             plotlyOutput("plot1")
         )
     )
